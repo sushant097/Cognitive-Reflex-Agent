@@ -1,7 +1,7 @@
 
 # 🧠 Cognitive-Reflex-Agent
 
-> **A Dual-Process AI Architecture** implementing "System 1" (Semantic Memory) and "System 2" (Dynamic Planning). Features a secure AST-based sandbox, Jaccard-similarity caching, and Multi-MCP orchestration.
+> **An Open-Source "Code Interpreter" Engine.** Answers queries by generating and executing Python code in a secure sandbox. Features a 'System 1' semantic cache to instantly recall successful execution paths.
 
 [](https://www.python.org/)
 [](https://modelcontextprotocol.io/)
@@ -12,12 +12,15 @@
 
 ## 📖 Executive Summary
 
-Building autonomous agents typically results in two failure modes: **High Latency** (re-reasoning common tasks) and **Unreliability** (hallucinating API parameters).
+Most AI agents try to "talk" their way through complex problems, leading to hallucinations and bad math.
 
-**Cognitive-Reflex-Agent** addresses these via a **Hybrid Architecture**:
+**Cognitive-Reflex-Agent** takes a different approach: **It doesn't guess; it codes.**
 
-1.  **Reflex (System 1):** A sub-millisecond **Semantic Cache** that recognizes intent via Jaccard similarity, bypassing the LLM entirely for recurring queries.
-2.  **Reasoning (System 2):** A **Sandboxed Python Planner** that generates, sanitizes, and executes valid Python code in a restricted runtime to solve novel problems.
+Similar to **ChatGPT's Advanced Data Analysis (Code Interpreter)**, this agent treats your question as a software engineering problem. It dynamically writes a Python script to solve your task, executes it in a secure, isolated sandbox, and returns the factual result.
+
+**But it goes one step further:**
+It implements a **"System 1" Reflex**. While standard agents re-write code for every recurring query (wasting time and money), this agent uses **Semantic Caching** to recognize familiar intent. If it has solved a similar problem before, it bypasses the coding loop and answers instantly.
+
 
 -----
 
