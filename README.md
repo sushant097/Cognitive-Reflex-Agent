@@ -173,6 +173,8 @@ uv pip install -e .
 uv run agent.py
 ```
 
+**Make sure to create `.env` and put your `GEMINI_API_KEY`.**
+
 **Example Interaction:**
 
 ```text
