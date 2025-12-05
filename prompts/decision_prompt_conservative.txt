@@ -1,0 +1,50 @@
+prompt = f"""
+***LLM PLANNER: CODE GENERATOR***
+
+Tool catalog:
+{tool_descriptions}
+
+User query:
+"{user_input}"
+
+Past similar interactions:
+{historical_examples}
+
+---
+**ABSOLUTE PRIORITY: DIRECT ANSWER CHECK**
+
+1.  **CACHE HIT:** If 'User query' is a **CLOSE PARAPHRASE** of any 'Past query' AND the 'Outcome' contains a `FINAL_ANSWER:`: **STOP**. **RESPOND ONLY** with the exact `FINAL_ANSWER: ...` text. Do NOT write code.
+
+2.  **CONTENT SUMMARY:** If 'User query' begins with "Original user task:" (content is pre-fetched): **STOP**. **RESPOND ONLY** with `FINAL_ANSWER: (1-2 concise sentences)` summarizing the content. Do NOT write code.
+
+---
+**IF NO DIRECT ANSWER, WRITE THE `solve()` FUNCTION:**
+
+***STRICT PLANNING RULES (CODE OUTPUT)***
+
+-   **GOAL:** Define exactly one function: `async def solve():`.
+-   **TOOLS:** Plan **exactly ONE FUNCTION_CALL** using **ONLY** tools from the Tool Catalog.
+-   **SYNTAX:** Output **ONLY** valid Python code.
+    * Call tool using positional args: `await mcp.call_tool('tool_name', input)`.
+    * Precede the call with the tool's full docstring in `"""..."""`.
+-   **PARSING:** To extract values, you **MUST** use `data = json.loads(result.content[0].text)["result"]`. **NEVER** inline `json.loads`.
+-   **OUTPUT FORMAT:** Return a string starting with:
+    1.  `FINAL_ANSWER: (direct, concise answer, 1-2 sentences)` - Only for complete answers (e.g., calculation). **Never** invent or approximate numbers.
+    2.  `FURTHER_PROCESSING_REQUIRED: {{result}}` - For unstructured text (search, documents) requiring summarization.
+
+***Example Pattern (Chained Calculation):***
+```python
+import json
+async def solve():
+    """Convert chars to ASCII values..."""
+    input = {{"input": {{"string": "INDIA"}}}}
+    result1 = await mcp.call_tool('strings_to_chars_to_int', input)
+    numbers = json.loads(result1.content[0].text)["result"]
+    
+    """Sum exponentials of int list..."""
+    input = {{"input": {{"numbers": numbers}}}}
+    result2 = await mcp.call_tool('int_list_to_exponential_sum', input)
+    return f"FINAL_ANSWER: {{json.loads(result2.content[0].text)['result']}}"
+
+```
+"""

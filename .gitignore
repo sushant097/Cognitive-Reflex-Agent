@@ -1,0 +1,9 @@
+.env
+documents/
+faiss_index/
+logs/
+__pycache__/
+*.pyc
+memory/2025/*
+uv.lock
+.DS_Store
