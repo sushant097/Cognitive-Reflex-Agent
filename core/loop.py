@@ -1,5 +1,3 @@
-# modules/loop.py
-
 import asyncio
 import re
 from pathlib import Path
