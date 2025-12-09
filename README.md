@@ -195,4 +195,4 @@ Agent: [System 1] ⚡ Semantic memory hit (0.85 similarity).
        [Output] SpaceX successfully launched Starship...
 ```
 
-**This is part of The School of AI "EAG V2" course taught by Rohan Shravan**
+*Note: This is part of The School of AI "EAG V2" course taught by Rohan Shravan*
