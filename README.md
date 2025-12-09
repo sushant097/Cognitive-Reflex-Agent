@@ -1,7 +1,7 @@
 
 # 🧠 Cognitive-Reflex-Agent
 
-> **An Open-Source "Code Interpreter" Engine.** Answers queries by generating and executing Python code in a secure sandbox. Features a 'System 1' semantic cache to instantly recall successful execution paths.
+> Answers queries by generating and executing Python code in a secure sandbox. Features a 'System 1' semantic cache to instantly recall successful execution paths.
 
 [](https://www.python.org/)
 [](https://modelcontextprotocol.io/)
