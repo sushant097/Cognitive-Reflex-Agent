@@ -195,5 +195,4 @@ Agent: [System 1] ⚡ Semantic memory hit (0.85 similarity).
        [Output] SpaceX successfully launched Starship...
 ```
 
-## LICENSE
-This project is licensed under the MIT License - see the [MIT LICENSE](LICENSE) file for details.
+**This is part of The School of AI "EAG V2" course taught by Rohan Shravan**
